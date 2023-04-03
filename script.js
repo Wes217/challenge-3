@@ -21,23 +21,52 @@ generateBtn.addEventListener("click", writePassword);
 //   alert(len +'is not a number');
 //   var len = prompt('how many characters in password');
 // }
-// var usLower= confirm('include')
+// var useLower= confirm('include')
 
-var characters = '1234567890abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-// console.log(characters.length)
+
 function generatePassword(){
+  var characters = '1234567890abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   var len = prompt('how many characters in password');
   password = '';
   // console.log(len);
   len = Number(len);
-  // console.log(len);
+  // // console.log(len);
+  // if (len > 128 || len < 8){
+  
+
+
+
+  // }
   //--------------------lowerCase
-  var usLower= confirm('include Lower case')
-  if (usLower == false){
+  var useLower= confirm('include Lower case')
+  if (useLower == false){
     characters = characters.replace('abcdefghijklmnopqrstuvwxyz','')
     // console.log(characters)
   }
-  //--------------------
+  //--------------------upperCase
+  var useUpper= confirm('include Upper case')
+  if (useUpper == false){
+    characters = characters.replace('ABCDEFGHIJKLMNOPQRSTUVWXYZ','')
+    // console.log(characters)
+  }
+  //--------------------Numbers
+  var useNum = confirm('include Numbers')
+  if (useNum == false){
+    characters = characters.replace('1234567890','')
+    // console.log(characters)
+  }
+  //--------------------Special
+  var useSpecial = confirm('Include special characters' )
+  if (useSpecial == false){
+    characters = characters.replace('!@#$%^&*()','')
+    // console.log(characters)
+  }
+
+
+
+
+
+
   //--------------------All Characters
   for(var i = 0; i< len; i++){
     var randomIndex = Math.floor(Math.random()*characters.length)
@@ -46,7 +75,6 @@ function generatePassword(){
     // console.log (password)
     
   }
-  //--------------------
   //--------------------Ending password
   console.log = (password)
   var passwordText = document.querySelector("#password");
