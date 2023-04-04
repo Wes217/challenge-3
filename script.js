@@ -66,13 +66,27 @@ function generatePassword(){
     characters = characters.replace(Special,'')
     // console.log(characters)
   }
-
-  // while()
-
-
-
-
-
+  //--------------------noCharacters
+  while(!useLower && !useUpper && !useNum && !useSpecial ){
+    alert('No characters chosen')
+    characters = '1234567890abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    useLower= confirm('include Lower case')
+    if (useLower == false){
+      characters = characters.replace(lowerCase,'')
+  }
+    useUpper= confirm('include Upper case')
+    if (useUpper == false){
+      characters = characters.replace(upperCase,'')
+  }
+    useNum = confirm('include Numbers')
+    if (useNum == false){
+      characters = characters.replace(Numbers,'')
+  }
+    useSpecial = confirm('Include special characters' )
+    if (useSpecial == false){
+      characters = characters.replace(Special,'')
+  }
+  }
   //--------------------All Characters
   for(var i = 0; i< len; i++){
     var randomIndex = Math.floor(Math.random()*characters.length)
