@@ -5,7 +5,9 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
  
+  var passwordText = document.querySelector("#password");
 
+  passwordText.value = password;
 }
 
 // Add event listener to generate button
@@ -22,8 +24,10 @@ generateBtn.addEventListener("click", writePassword);
 //   var len = prompt('how many characters in password');
 // }
 // var useLower= confirm('include')
-
-
+var lowerCase = 'abcdefghijklmnopqrstuvwxyz'
+var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+var Numbers = '1234567890'
+var Special = '!@#$%^&*()'
 function generatePassword(){
   var characters = '1234567890abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   var len = prompt('how many characters in password');
@@ -31,37 +35,39 @@ function generatePassword(){
   // console.log(len);
   len = Number(len);
   // // console.log(len);
-  // if (len > 128 || len < 8){
-  
+  //--------------------Alert
+  while (len > 128 || len < 8 || len == NaN){
+    alert(len +'is not a valid');
 
-
-
-  // }
+    len = prompt('how many characters in password');
+    len = Number(len);
+  }
   //--------------------lowerCase
   var useLower= confirm('include Lower case')
   if (useLower == false){
-    characters = characters.replace('abcdefghijklmnopqrstuvwxyz','')
+    characters = characters.replace(lowerCase,'')
     // console.log(characters)
   }
   //--------------------upperCase
   var useUpper= confirm('include Upper case')
   if (useUpper == false){
-    characters = characters.replace('ABCDEFGHIJKLMNOPQRSTUVWXYZ','')
+    characters = characters.replace(upperCase,'')
     // console.log(characters)
   }
   //--------------------Numbers
   var useNum = confirm('include Numbers')
   if (useNum == false){
-    characters = characters.replace('1234567890','')
+    characters = characters.replace(Numbers,'')
     // console.log(characters)
   }
   //--------------------Special
   var useSpecial = confirm('Include special characters' )
   if (useSpecial == false){
-    characters = characters.replace('!@#$%^&*()','')
+    characters = characters.replace(Special,'')
     // console.log(characters)
   }
 
+  // while()
 
 
 
@@ -77,8 +83,5 @@ function generatePassword(){
   }
   //--------------------Ending password
   console.log = (password)
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+  return password
 }
